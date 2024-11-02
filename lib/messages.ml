@@ -68,11 +68,11 @@ let decode_msg (b : bytes) : message option =
   match String.split_on_char ' ' (Bytes.to_string b) with
   | ["DATA"; seq; c] ->
       let seq, c = (strip seq, strip c) in
-      _log Log_Debug (Printf.sprintf "Decode result: DATA %s %s\n" seq c) ;
+      _log Log_Debug (Printf.sprintf "Decode result: DATA %s %s" seq c) ;
       Some (DATA (int_of_string seq, String.get c 0))
   | ["ACK"; seq] ->
       let seq = strip seq in
-      _log Log_Debug (Printf.sprintf "Decode result: ACK %s\n" seq) ;
+      _log Log_Debug (Printf.sprintf "Decode result: ACK %s" seq) ;
       Some (ACK (int_of_string seq))
   | _ ->
       _log Log_Error
