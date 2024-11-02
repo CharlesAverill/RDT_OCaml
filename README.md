@@ -1,6 +1,8 @@
 # RDT\_OCaml
 
-An implementation of a Reliable Data Transfer (RDT) protocol in OCaml over UDP 
+An implementation of a Reliable Data Transfer (RDT) protocol in OCaml over UDP.
+
+[rdt3.0 - stop-and-wait](https://www.geeksforgeeks.org/reliable-data-transfer-rdt-3-0/)
 
 ## Example
 
