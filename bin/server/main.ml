@@ -46,7 +46,7 @@ let () =
     (* Bind the server's IP address and port number to the socket *)
     bind sock sockaddr ;
     _log Log_Info
-      (Printf.sprintf "UDP server listening on %s:%d\n"
+      (Printf.sprintf "UDP server listening on %s:%d"
          (string_of_inet_addr addr) port ) ;
     while true do
       send_receive sock sockaddr
