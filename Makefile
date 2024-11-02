@@ -1,7 +1,7 @@
 .PHONY: default build install uninstall clean fmt
 .IGNORE: fmt
 
-IP ?= 127.0.0.1
+IP ?= 0.0.0.0
 PORT ?= 8888
 
 OPAM ?= opam exec --
