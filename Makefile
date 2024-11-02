@@ -4,37 +4,39 @@
 IP ?= 127.0.0.1
 PORT ?= 8888
 
+OPAM ?= opam exec -- 
+
 default: build
 
 fmt:
-	opam exec -- dune build @fmt
-	opam exec -- dune promote
+	$(OPAM) dune build @fmt
+	$(OPAM) dune promote
 
 build: fmt
-	opam exec -- dune build
+	$(OPAM) dune build
 
 install:
-	opam exec -- dune install
+	$(OPAM) dune install
 
 uninstall:
-	opam exec -- dune uninstall
+	$(OPAM) dune uninstall
 
 clean:
-	opam exec -- dune clean
+	$(OPAM) dune clean
 	git clean -dfXq
 
 runclient: build
-	opam exec -- dune exec -- rdt.client $(IP) $(PORT)
+	$(OPAM) -- dune exec -- rdt.client $(IP) $(PORT)
 
 runserver: build
-	opam exec -- dune exec -- rdt.server $(IP) $(PORT)
+	$(OPAM) dune exec -- rdt.server $(IP) $(PORT)
 
 raw_run: build
 	clear
 	_build/default/bin/main.exe 
 
 debug: build
-	opam exec -- ocamldebug _build/default/RDT_OCaml/main.bc
+	$(OPAM) ocamldebug _build/default/RDT_OCaml/main.bc
 
 DOCS_PATH=docs/
 DOCS_NAME=RDT_OCaml
@@ -53,7 +55,7 @@ cleandocs:
 	rm -rf $(DOCS_PATH)module $(DOCS_PATH)docs $(DOCS_PATH)odoc.support $(DOCS_PATH)index.html
 
 docs: cleandocs build
-	opam exec -- dune build @doc
+	$(OPAM) dune build @doc
 	mv -f _build/default/_doc/_html/* $(DOCS_PATH)
 	rm -f $(DOCS_PATH)index.html
 	mv $(DOCS_PATH)RDT_OCaml/RDT_OCaml.html $(DOCS_PATH)index.html
