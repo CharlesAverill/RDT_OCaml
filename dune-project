@@ -1,23 +1,23 @@
 (lang dune 3.9)
 
-(name PROJECT_NAME_)
+(name RDT_OCaml)
 
 (generate_opam_files true)
 
 (source
- (github _AUTHOR_USERNAME_/PROJECT_NAME_))
+ (github CharlesAverill/RDT_OCaml))
 
-(authors "_AUTHOR_NAME_")
+(authors "Charles Averill")
 
-(maintainers "_AUTHOR_NAME_")
+(maintainers "Charles Averill")
 
 (license LICENSE)
 
-(documentation https://github.com/_AUTHOR_USERNAME_/PROJECT_NAME_)
+(documentation https://github.com/CharlesAverill/RDT_OCaml)
 
 (package
- (name PROJECT_NAME_)
- (synopsis "_PROJECT_SYNOPSIS_")
- (description "_PROJECT_DESCRIPTION_")
+ (name RDT_OCaml)
+ (synopsis "")
+ (description "An implementation of a Reliable Data Transfer (RDT) protocol in OCaml over UDP")
  (depends ocaml dune alcotest ocamlformat))
 

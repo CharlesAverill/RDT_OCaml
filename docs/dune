@@ -1,3 +1,3 @@
 (documentation
- (package PROJECT_NAME_)
- (mld_files PROJECT_NAME_))
+ (package RDT_OCaml)
+ (mld_files RDT_OCaml))

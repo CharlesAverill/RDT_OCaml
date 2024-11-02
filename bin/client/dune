@@ -1,0 +1,4 @@
+(executable
+ (public_name rdt.client)
+ (name main)
+ (libraries rdt unix))
