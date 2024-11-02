@@ -26,18 +26,23 @@ let send_receive (sock : file_descr) sockaddr =
       let _ = sendto sock msg 0 (Bytes.length msg) [] client_addr in
       ()
 
-let server_addr = "127.0.0.1"
-
-let server_port = 8888
-
 let () =
-  (* Create a UDP socket *)
-  let sock = socket PF_INET SOCK_DGRAM 0 in
-  setsockopt sock SO_REUSEADDR true ;
-  let sockaddr = ADDR_INET (inet_addr_of_string server_addr, server_port) in
-  (* Bind the server's IP address and port number to the socket *)
-  bind sock sockaddr ;
-  Printf.printf "UDP server listening on %s:%d\n" server_addr server_port ;
-  while true do
-    send_receive sock sockaddr
-  done
+  (* Read server info from argv *)
+  if Array.length Sys.argv < 3 then
+    _log Log_Error "rdt.server <addr> <port>"
+  else
+    let addr, port =
+      (inet_addr_of_string Sys.argv.(1), int_of_string Sys.argv.(2))
+    in
+    (* Create a UDP socket *)
+    let sock = socket PF_INET SOCK_DGRAM 0 in
+    setsockopt sock SO_REUSEADDR true ;
+    let sockaddr = ADDR_INET (addr, port) in
+    (* Bind the server's IP address and port number to the socket *)
+    bind sock sockaddr ;
+    _log Log_Info
+      (Printf.sprintf "UDP server listening on %s:%d\n"
+         (string_of_inet_addr addr) port ) ;
+    while true do
+      send_receive sock sockaddr
+    done

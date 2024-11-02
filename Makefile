@@ -1,6 +1,9 @@
 .PHONY: default build install uninstall clean fmt
 .IGNORE: fmt
 
+IP ?= 127.0.0.1
+PORT ?= 8888
+
 default: build
 
 fmt:
@@ -21,10 +24,10 @@ clean:
 	git clean -dfXq
 
 runclient: build
-	opam exec -- dune exec -- rdt.client
+	opam exec -- dune exec -- rdt.client $(IP) $(PORT)
 
 runserver: build
-	opam exec -- dune exec -- rdt.server
+	opam exec -- dune exec -- rdt.server $(IP) $(PORT)
 
 raw_run: build
 	clear

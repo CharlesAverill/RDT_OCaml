@@ -52,15 +52,18 @@ let send_receive (sock : file_descr) (sockaddr : sockaddr) : unit =
       done )
     chars
 
-let server_addr = "127.0.0.1"
-
-let server_port = 8888
-
 let () =
-  (* Create a UDP socket *)
-  let sock = socket PF_INET SOCK_DGRAM 0 in
-  let sockaddr = ADDR_INET (inet_addr_of_string server_addr, server_port) in
-  (* All client logic *)
-  while true do
-    send_receive sock sockaddr
-  done
+  (* Read server info from argv *)
+  if Array.length Sys.argv < 3 then
+    _log Log_Error "rdt.client <addr> <port>"
+  else
+    let addr, port =
+      (inet_addr_of_string Sys.argv.(1), int_of_string Sys.argv.(2))
+    in
+    (* Create a UDP socket *)
+    let sock = socket PF_INET SOCK_DGRAM 0 in
+    let sockaddr = ADDR_INET (addr, port) in
+    (* All client logic *)
+    while true do
+      send_receive sock sockaddr
+    done
