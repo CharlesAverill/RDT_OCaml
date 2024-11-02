@@ -19,6 +19,11 @@ let send_receive (sock : file_descr) sockaddr =
       let _ = sendto sock msg 0 (Bytes.length msg) [] client_addr in
       (* Increment the expected sequence number *)
       seq_number := 1 + !seq_number
+  | Some (DATA (seq, c)) ->
+	  (* Send a duplicate ACK to the client *)
+	  let msg = encode_msg (ACK seq) in
+	  let _ = sendto sock msg 0 (Bytes.length msg) [] client_addr in
+	  ()
   | _ ->
       (* Malformed data received *)
       (* Send a duplicate ACK to the client *)
