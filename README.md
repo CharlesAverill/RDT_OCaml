@@ -83,13 +83,23 @@ LOG:[DEBUG] - Decode result: DATA 4 o
 LOG:[INFO] - Received: o
 LOG:[ERROR] - Tried to decode unrecognized message: DATA 5  
 LOG:[DEBUG] - Decode result: DATA 6 W
+LOG:[INFO] - Received: W
 LOG:[DEBUG] - Decode result: DATA 7 o
+LOG:[INFO] - Received: o
 LOG:[DEBUG] - Decode result: DATA 8 r
+LOG:[INFO] - Received: r
 LOG:[DEBUG] - Decode result: DATA 9 l
+LOG:[INFO] - Received: l
 LOG:[DEBUG] - Decode result: DATA 10 d
+LOG:[INFO] - Received: d
 LOG:[DEBUG] - Decode result: DATA 11 !
+LOG:[INFO] - Received: !
 LOG:[DEBUG] - Decode result: DATA 12 W
+LOG:[INFO] - Received: W
 LOG:[DEBUG] - Decode result: DATA 13 o
+LOG:[INFO] - Received: o
 LOG:[DEBUG] - Decode result: DATA 14 w
+LOG:[INFO] - Received: w
 LOG:[DEBUG] - Decode result: DATA 15 !
+LOG:[INFO] - Received: !
 ```
