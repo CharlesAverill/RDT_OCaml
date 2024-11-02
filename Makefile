@@ -12,7 +12,7 @@ fmt:
 	$(OPAM) dune build @fmt
 	$(OPAM) dune promote
 
-build: fmt
+build: 
 	$(OPAM) dune build
 
 install:
