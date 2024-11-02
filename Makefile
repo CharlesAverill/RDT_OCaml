@@ -4,32 +4,33 @@
 IP ?= 127.0.0.1
 PORT ?= 8888
 
-OPAM ?= opam exec -- 
+OPAM ?= opam exec --
+DUNE ?= dune
 
 default: build
 
 fmt:
-	$(OPAM) dune build @fmt
-	$(OPAM) dune promote
+	$(OPAM) $(DUNE) build @fmt
+	$(OPAM) $(DUNE) promote
 
 build: 
-	$(OPAM) dune build
+	$(OPAM) $(DUNE) build
 
 install:
-	$(OPAM) dune install
+	$(OPAM) $(DUNE) install
 
 uninstall:
-	$(OPAM) dune uninstall
+	$(OPAM) $(DUNE) uninstall
 
 clean:
-	$(OPAM) dune clean
+	$(OPAM) $(DUNE) clean
 	git clean -dfXq
 
 runclient: build
-	$(OPAM) -- dune exec -- rdt.client $(IP) $(PORT)
+	$(OPAM) $(DUNE) exec -- rdt.client $(IP) $(PORT)
 
 runserver: build
-	$(OPAM) dune exec -- rdt.server $(IP) $(PORT)
+	$(OPAM) $(DUNE) exec -- rdt.server $(IP) $(PORT)
 
 raw_run: build
 	clear
@@ -55,7 +56,7 @@ cleandocs:
 	rm -rf $(DOCS_PATH)module $(DOCS_PATH)docs $(DOCS_PATH)odoc.support $(DOCS_PATH)index.html
 
 docs: cleandocs build
-	$(OPAM) dune build @doc
+	$(OPAM) $(DUNE) build @doc
 	mv -f _build/default/_doc/_html/* $(DOCS_PATH)
 	rm -f $(DOCS_PATH)index.html
 	mv $(DOCS_PATH)RDT_OCaml/RDT_OCaml.html $(DOCS_PATH)index.html
