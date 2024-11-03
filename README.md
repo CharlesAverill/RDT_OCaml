@@ -4,6 +4,14 @@ An implementation of a Reliable Data Transfer (RDT) protocol in OCaml over UDP.
 
 [rdt3.0 - stop-and-wait](https://www.geeksforgeeks.org/reliable-data-transfer-rdt-3-0/)
 
+## Building, Running
+
+```bash
+$ make build
+$ make runserver IP=0.0.0.0 PORT=8888
+$ make runclient IP=127.0.0.1 PORT=8888
+```
+
 ## Example
 
 ### Client
@@ -11,7 +19,7 @@ An implementation of a Reliable Data Transfer (RDT) protocol in OCaml over UDP.
 ```
 $ make runclient
 dune build
-dune exec -- rdt.client 10.176.69.129 8888
+dune exec -- rdt.client 127.0.0.1 8888
 >>> Hello World!                    
 LOG:[INFO] - Sent sequence 0
 LOG:[DEBUG] - Decode result: ACK 0
